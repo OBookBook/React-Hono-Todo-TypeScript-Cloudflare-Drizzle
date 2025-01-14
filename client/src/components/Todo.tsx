@@ -19,12 +19,19 @@ const TodoItem = ({ todo, onDelete, onEdit }: TodoItem) => {
     setIsEditing(false);
   };
 
+  const toggleCompletion = () => {
+    setIsCompleted(!isCompleted);
+    onEdit(Number(todo.id)!, inputText, !isCompleted);
+  };
+
   return (
     <div className="flex items-center justify-between bg-gray-100 rounded-lg p-4 dark:bg-gray-700">
       <div className="flex items-center space-x-2">
         <input
           className="w-5 h-5 text-blue-500 rounded focus:ring-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:checked:bg-blue-500 dark:checked:border-blue-500"
           type="checkbox"
+          checked={isCompleted}
+          onChange={toggleCompletion}
         />
         {isEditing ? (
           <input

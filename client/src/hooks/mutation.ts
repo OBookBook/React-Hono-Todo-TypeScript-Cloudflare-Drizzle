@@ -48,12 +48,13 @@ export const useEditTodo = () => {
       title: string;
       isCompleted: boolean;
     }) => {
+      const status = isCompleted ? "done" : "todo";
       return await fetch(`${import.meta.env.VITE_API_URL}/todos/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id, title, isCompleted }),
+        body: JSON.stringify({ id, title, status }),
       });
     },
     onSuccess: () => {
