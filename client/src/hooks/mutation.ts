@@ -34,3 +34,30 @@ export const useDeleteTodo = () => {
     },
   });
 };
+
+export const useEditTodo = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({
+      id,
+      title,
+      isCompleted,
+    }: {
+      id: number;
+      title: string;
+      isCompleted: boolean;
+    }) => {
+      return await fetch(`${import.meta.env.VITE_API_URL}/todos/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id, title, isCompleted }),
+      });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["todos"] }); // Updating the cache
+    },
+  });
+};

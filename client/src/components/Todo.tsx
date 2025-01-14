@@ -4,13 +4,18 @@ import { Todo } from "../types/types";
 interface TodoItem {
   todo: Todo;
   onDelete: (id: number) => void;
+  onEdit: (id: number, title: string, isCompleted: boolean) => void;
 }
 
-const TodoItem = ({ todo, onDelete }: TodoItem) => {
+const TodoItem = ({ todo, onDelete, onEdit }: TodoItem) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [inputText, setInputText] = useState<string>(todo.title);
+  const [isCompleted, setIsCompleted] = useState<boolean>(
+    todo.status === "done"
+  );
 
   const handleSave = () => {
+    onEdit(Number(todo.id), inputText, isCompleted);
     setIsEditing(false);
   };
 
