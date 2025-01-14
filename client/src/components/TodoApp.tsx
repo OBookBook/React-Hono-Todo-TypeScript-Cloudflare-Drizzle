@@ -1,9 +1,15 @@
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 import { useFetchTodos } from "../hooks/query";
+import { useDeleteTodo } from "../hooks/mutation";
 
 const TodoApp = () => {
   const { data: todos, error, isLoading } = useFetchTodos();
+  const deleteMutation = useDeleteTodo();
+
+  const handleDelete = (id: number) => {
+    deleteMutation.mutate(id);
+  };
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -15,7 +21,7 @@ const TodoApp = () => {
           Todo App
         </h1>
         <TodoInput />
-        <TodoList todos={todos} />
+        <TodoList todos={todos} onDelete={handleDelete} />
       </div>
     </main>
   );

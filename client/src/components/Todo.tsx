@@ -2,9 +2,10 @@ import { Todo } from "../types/types";
 
 interface TodoItem {
   todo: Todo;
+  onDelete: (id: number) => void;
 }
 
-const TodoItem = ({ todo }: TodoItem) => {
+const TodoItem = ({ todo, onDelete }: TodoItem) => {
   return (
     <div className="flex items-center justify-between bg-gray-100 rounded-lg p-4 dark:bg-gray-700">
       <div className="flex items-center space-x-2">
@@ -27,7 +28,10 @@ const TodoItem = ({ todo }: TodoItem) => {
           </svg>
         </button>
 
-        <button className="text-red-500 hover:text-red-600">
+        <button
+          className="text-red-500 hover:text-red-600"
+          onClick={() => onDelete(todo.id)}
+        >
           <svg
             className="h-5 w-5"
             fill="currentColor"
