@@ -1,7 +1,22 @@
+import { useQuery } from "@tanstack/react-query";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 
 const TodoApp = () => {
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["todos"],
+    queryFn: async () => {
+      const response = await fetch("http://127.0.0.1:8787/todos");
+      if (!response.ok) {
+        throw new Error("Network resuponse wa not ok");
+      }
+
+      return response.json();
+    },
+  });
+
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
     <main className="flex flex-col items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6 dark:bg-gray-800">
