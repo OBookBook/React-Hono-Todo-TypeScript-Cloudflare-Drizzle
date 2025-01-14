@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { eq } from "drizzle-orm";
 import { todos } from "./db/schema";
 import { drizzle } from "drizzle-orm/d1";
 
@@ -29,7 +30,6 @@ app.get("/todos", async (c) => {
  *   "title": "test"
  * }
  */
-
 app.post("/todos", async (c) => {
   try {
     const params = await c.req.json<typeof todos.$inferInsert>();
@@ -42,6 +42,32 @@ app.post("/todos", async (c) => {
     return c.json(result);
   } catch (error) {
     return c.json({ error: "Failed to fetch todos" }, 500);
+  }
+});
+
+/**
+ * PUT: http://127.0.0.1:8787/todos
+ * Request
+ * {
+ *   "title": "update!!"
+ * }
+ */
+app.put("/todos/:id", async (c) => {
+  const id = parseInt(c.req.param("id"));
+
+  if (isNaN(id)) return c.json({ error: "Invalid ID" }, 400);
+
+  try {
+    const params = await c.req.json<typeof todos.$inferSelect>();
+    const db = drizzle(c.env.DB);
+    const result = await db
+      .update(todos)
+      .set({ title: params.title, status: params.status })
+      .where(eq(todos.id, id));
+
+    return c.json(result);
+  } catch (error) {
+    return c.json({ error: "Failed to update todos" }, 500);
   }
 });
 
