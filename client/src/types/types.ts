@@ -3,5 +3,5 @@ export type Todo = {
   title: string;
   status?: string;
   createdAt?: string;
-  updatedAt: string;
+  updatedAt?: string;
 };
