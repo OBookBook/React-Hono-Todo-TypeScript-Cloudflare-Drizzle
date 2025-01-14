@@ -4,7 +4,7 @@ export const useFetchTodos = () => {
   return useQuery({
     queryKey: ["todos"],
     queryFn: async () => {
-      const response = await fetch("http://127.0.0.1:8787/todos");
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/todos`);
       if (!response.ok) {
         throw new Error("Network resuponse wa not ok");
       }
