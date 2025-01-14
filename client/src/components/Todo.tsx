@@ -30,7 +30,7 @@ const TodoItem = ({ todo, onDelete }: TodoItem) => {
 
         <button
           className="text-red-500 hover:text-red-600"
-          onClick={() => onDelete(todo.id)}
+          onClick={() => onDelete(Number(todo.id))}
         >
           <svg
             className="h-5 w-5"
