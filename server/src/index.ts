@@ -71,4 +71,20 @@ app.put("/todos/:id", async (c) => {
   }
 });
 
+/**
+ * DELETE: http://127.0.0.1:8787/todos/6
+ */
+app.delete("/todos/:id", async (c) => {
+  const id = parseInt(c.req.param("id"));
+  if (isNaN(id)) return c.json({ error: "Invalid ID" }, 400);
+
+  try {
+    const db = drizzle(c.env.DB);
+    const result = await db.delete(todos).where(eq(todos.id, id));
+    return c.json(result);
+  } catch (error) {
+    return c.json({ error: "Failed to delete todos" }, 500);
+  }
+});
+
 export default app;
