@@ -22,4 +22,27 @@ app.get("/todos", async (c) => {
   }
 });
 
+/**
+ * POST: http://127.0.0.1:8787/todos
+ * Request
+ * {
+ *   "title": "test"
+ * }
+ */
+
+app.post("/todos", async (c) => {
+  try {
+    const params = await c.req.json<typeof todos.$inferInsert>();
+    const db = drizzle(c.env.DB);
+    const result = await db
+      .insert(todos)
+      .values({ title: params.title })
+      .execute();
+
+    return c.json(result);
+  } catch (error) {
+    return c.json({ error: "Failed to fetch todos" }, 500);
+  }
+});
+
 export default app;
