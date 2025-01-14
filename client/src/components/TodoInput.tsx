@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useAddTodo } from "../hooks/mutation";
 
 const TodoInput = () => {
   const [inputText, setInputText] = useState<string>("");
+  const mutation = useAddTodo();
 
   return (
     <div className="flex items-center mb-4">
@@ -14,7 +16,13 @@ const TodoInput = () => {
         }
         value={inputText}
       />
-      <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-r-lg">
+      <button
+        onClick={() => {
+          mutation.mutate({ title: inputText });
+          setInputText("");
+        }}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-r-lg"
+      >
         Add
       </button>
     </div>
