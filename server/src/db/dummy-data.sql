@@ -1,0 +1,1 @@
+INSERT INTO todos (title) VALUES ("Reaqct"), ("TypeScript"), ("Hono"), ("Drizzle");
