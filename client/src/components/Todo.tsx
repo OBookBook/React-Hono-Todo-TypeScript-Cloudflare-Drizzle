@@ -41,7 +41,13 @@ const TodoItem = ({ todo, onDelete, onEdit }: TodoItem) => {
             onChange={(e) => setInputText(e.target.value)}
           />
         ) : (
-          <span className="text-gray-800 dark:text-gray-200">{todo.title}</span>
+          <span
+            className={`text-gray-800 dark:text-gray-200 ${
+              isCompleted ? "line-through" : ""
+            }`}
+          >
+            {todo.title}
+          </span>
         )}
       </div>
       <div className="flex space-x-2">
