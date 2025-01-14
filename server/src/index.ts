@@ -1,9 +1,25 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
+import { todos } from "./db/schema";
+import { drizzle } from "drizzle-orm/d1";
 
-const app = new Hono()
+interface Bindings {
+  DB: D1Database;
+}
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+const app = new Hono<{ Bindings: Bindings }>();
 
-export default app
+app.get("/", (c) => {
+  return c.text("Hello Hono!");
+});
+
+app.get("/todos", async (c) => {
+  const db = drizzle(c.env.DB);
+  try {
+    const result = await db.select().from(todos).all();
+    return c.json(result);
+  } catch (error) {
+    return c.json({ error: "Failed to fetch todos" }, 500);
+  }
+});
+
+export default app;
