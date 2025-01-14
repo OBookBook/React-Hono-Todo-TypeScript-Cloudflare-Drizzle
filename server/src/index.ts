@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { cors } from "hono/cors";
 import { eq } from "drizzle-orm";
 import { todos } from "./db/schema";
 import { drizzle } from "drizzle-orm/d1";
@@ -8,6 +9,8 @@ interface Bindings {
 }
 
 const app = new Hono<{ Bindings: Bindings }>();
+
+app.use("/todos/*", cors());
 
 app.get("/", (c) => {
   return c.text("Hello Hono!");
