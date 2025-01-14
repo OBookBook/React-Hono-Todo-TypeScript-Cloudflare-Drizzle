@@ -1,11 +1,16 @@
 import TodoItem from "./Todo";
+import { Todo } from "../types/types";
 
-const TodoList = () => {
+interface TodosListProps {
+  todos: Todo[];
+}
+
+const TodoList = ({ todos }: TodosListProps) => {
   return (
     <div className="space-y-4">
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
+      {todos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} />
+      ))}
     </div>
   );
 };

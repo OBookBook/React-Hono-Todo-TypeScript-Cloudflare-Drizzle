@@ -3,7 +3,11 @@ import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 
 const TodoApp = () => {
-  const { data, error, isLoading } = useQuery({
+  const {
+    data: todos,
+    error,
+    isLoading,
+  } = useQuery({
     queryKey: ["todos"],
     queryFn: async () => {
       const response = await fetch("http://127.0.0.1:8787/todos");
@@ -15,6 +19,7 @@ const TodoApp = () => {
     },
   });
 
+  if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
@@ -24,7 +29,7 @@ const TodoApp = () => {
           Todo App
         </h1>
         <TodoInput />
-        <TodoList />
+        <TodoList todos={todos} />
       </div>
     </main>
   );

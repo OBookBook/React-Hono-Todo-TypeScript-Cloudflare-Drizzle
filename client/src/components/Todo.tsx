@@ -1,4 +1,10 @@
-const TodoItem = () => {
+import { Todo } from "../types/types";
+
+interface TodoItem {
+  todo: Todo;
+}
+
+const TodoItem = ({ todo }: TodoItem) => {
   return (
     <div className="flex items-center justify-between bg-gray-100 rounded-lg p-4 dark:bg-gray-700">
       <div className="flex items-center space-x-2">
@@ -7,7 +13,7 @@ const TodoItem = () => {
           type="checkbox"
         />
 
-        <span className="text-gray-800 dark:text-gray-200">Todo</span>
+        <span className="text-gray-800 dark:text-gray-200">{todo.title}</span>
       </div>
       <div className="flex space-x-2">
         <button className="text-blue-500 hover:text-blue-600">
