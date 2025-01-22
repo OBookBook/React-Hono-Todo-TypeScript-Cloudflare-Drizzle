@@ -21,5 +21,18 @@ describe("TodoAppコンポーネントのテストケース", () => {
     renderWithQueryClient(<TodoApp />);
     screen.debug();
     expect(await screen.findByText(/Todo App/i)).toBeInTheDocument(); // 非同期処理のため、findByTextを使用
+    expect(await screen.findByText(/Add/i)).toBeInTheDocument(); // ボタンのテキストが"Add"であることを確認
+    expect(
+      await screen.findByPlaceholderText("Add a new task")
+    ).toBeInTheDocument(); // 入力フォームのプレースホルダーが"Add a new task"であることを確認
+    expect(
+      await screen.findByRole("button", { name: "Add" })
+    ).toBeInTheDocument(); // ボタンのテキストが"Add"であることを確認
+    expect(
+      (await screen.findAllByRole("button", { name: "Edit" })).length
+    ).toBeGreaterThan(0); // Editボタンが1つ以上存在することを確認
+    expect(
+      (await screen.findAllByRole("button", { name: "Delete" })).length
+    ).toBeGreaterThan(0); // Deleteボタンが1つ以上存在することを確認
   });
 });
