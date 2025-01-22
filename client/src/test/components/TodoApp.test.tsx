@@ -28,6 +28,12 @@ describe("TodoAppコンポーネントのテストケース", () => {
     expect(
       await screen.findByRole("button", { name: "Add" })
     ).toBeInTheDocument(); // ボタンのテキストが"Add"であることを確認
+  });
+
+  test("Todo一覧が正常に表示されること", async () => {
+    renderWithQueryClient(<TodoApp />);
+    expect(await screen.findByText("Todo 1")).toBeInTheDocument();
+    expect(await screen.findByText("Todo 2")).toBeInTheDocument();
     expect(
       (await screen.findAllByRole("button", { name: "Edit" })).length
     ).toBeGreaterThan(0); // Editボタンが1つ以上存在することを確認
