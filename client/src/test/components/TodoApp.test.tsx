@@ -1,10 +1,7 @@
-import { server } from "../mocks/server";
 import TodoApp from "../../components/TodoApp";
 import { describe, test, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-server.listen();
 
 const queryClient = new QueryClient();
 const renderWithQueryClient = (component: React.ReactNode) => {
