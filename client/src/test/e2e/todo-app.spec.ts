@@ -28,4 +28,20 @@ test.describe("Todo App", () => {
       page.locator("text=Delete this task").last()
     ).not.toBeVisible();
   });
+
+  //   test("Todoの編集", async ({ page }) => {
+  //     // タスクを追加する
+  //     await page.fill('input[placeholder="Add a new task"]', "Edit this Task");
+  //     await page.click("text=Add");
+  //     await expect(page.locator("text=Edit this Task").last()).toBeVisible();
+  //     // 編集ボタンをクリック
+  //     await page.locator("button[aria-label='Edit']").last().click();
+  //     // 編集用入力フィールドを取得して編集
+  //     const editInput = page.locator('input[type="text"]').last();
+  //     await editInput.fill("Edited Task");
+  //     // 保存ボタンをクリック
+  //     await page.locator("button", { hasText: "保存" }).last().click();
+  //     // 編集後のテキストが表示されていることを確認
+  //     await expect(page.locator("text=Edited Task").last()).toBeVisible();
+  //   });
 });
