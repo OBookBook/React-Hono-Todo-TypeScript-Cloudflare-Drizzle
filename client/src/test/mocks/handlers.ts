@@ -28,4 +28,13 @@ export const handlers = [
 
     return HttpResponse.json(newTodo, { status: 201 });
   }),
+  http.delete("http://127.0.0.1:8787/todos/:id", async (req) => {
+    const id = req.params.id;
+    todos = todos.filter((todo) => todo.id !== id);
+
+    return HttpResponse.json(
+      { message: "Todo with id ${id} has been deleted " },
+      { status: 200 }
+    );
+  }),
 ];

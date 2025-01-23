@@ -1,8 +1,9 @@
 import TodoApp from "../../components/TodoApp";
 import { describe, test, expect } from "vitest";
 import userEvent from "@testing-library/user-event";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 const queryClient = new QueryClient();
 const renderWithQueryClient = (component: React.ReactNode) => {
   return render(
@@ -67,9 +68,11 @@ describe("TodoAppコンポーネントのテストケース", () => {
     const deleteButtons = await screen.getAllByRole("button", {
       name: "Delete",
     });
-    await userEvent.click(deleteButtons[2]);
+    await userEvent.click(deleteButtons[deleteButtons.length - 1]);
 
-    // 削除したTodoが表示されていないことを確認する
-    // expect(await screen.queryByText("delete task")).not.toBeInTheDocument();
+    // 削除したTodoが表示されていないことを確認する。非同期にしてテスト
+    await waitFor(() => {
+      expect(screen.queryByText("delete task")).not.toBeInTheDocument();
+    });
   });
 });
