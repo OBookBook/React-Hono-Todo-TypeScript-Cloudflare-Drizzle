@@ -1,58 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1737596238519" clover="3.2.0">
-  <project timestamp="1737596238519" name="All files">
-    <metrics statements="265" coveredstatements="227" conditionals="40" coveredconditionals="33" methods="29" coveredmethods="24" elements="334" coveredelements="284" complexity="0" loc="265" ncloc="265" packages="6" files="13" classes="13"/>
-    <package name="client">
-      <metrics statements="14" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="postcss.config.js" path="C:\Users\homur\Desktop\2024_react+vite\React-Hono-Todo-TypeScript-Cloudflare-Drizzle\client\postcss.config.js">
-        <metrics statements="6" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-      </file>
-      <file name="tailwind.config.js" path="C:\Users\homur\Desktop\2024_react+vite\React-Hono-Todo-TypeScript-Cloudflare-Drizzle\client\tailwind.config.js">
-        <metrics statements="8" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="client.src">
-      <metrics statements="18" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="App.tsx" path="C:\Users\homur\Desktop\2024_react+vite\React-Hono-Todo-TypeScript-Cloudflare-Drizzle\client\src\App.tsx">
-        <metrics statements="11" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-      </file>
-      <file name="main.tsx" path="C:\Users\homur\Desktop\2024_react+vite\React-Hono-Todo-TypeScript-Cloudflare-Drizzle\client\src\main.tsx">
-        <metrics statements="7" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="client.src.components">
+<coverage generated="1737596648330" clover="3.2.0">
+  <project timestamp="1737596648330" name="All files">
+    <metrics statements="232" coveredstatements="227" conditionals="35" coveredconditionals="32" methods="24" coveredmethods="23" elements="291" coveredelements="282" complexity="0" loc="232" ncloc="232" packages="3" files="8" classes="8"/>
+    <package name="components">
       <metrics statements="120" coveredstatements="117" conditionals="15" coveredconditionals="14" methods="13" coveredmethods="12"/>
       <file name="Todo.tsx" path="C:\Users\homur\Desktop\2024_react+vite\React-Hono-Todo-TypeScript-Cloudflare-Drizzle\client\src\components\Todo.tsx">
         <metrics statements="61" coveredstatements="58" conditionals="8" coveredconditionals="7" methods="6" coveredmethods="5"/>
@@ -187,7 +137,7 @@
         <line num="25" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="client.src.hooks">
+    <package name="hooks">
       <metrics statements="66" coveredstatements="64" conditionals="13" coveredconditionals="11" methods="11" coveredmethods="11"/>
       <file name="mutation.ts" path="C:\Users\homur\Desktop\2024_react+vite\React-Hono-Todo-TypeScript-Cloudflare-Drizzle\client\src\hooks\mutation.ts">
         <metrics statements="53" coveredstatements="53" conditionals="10" coveredconditionals="9" methods="9" coveredmethods="9"/>
@@ -262,7 +212,7 @@
         <line num="15" count="12" type="stmt"/>
       </file>
     </package>
-    <package name="client.src.test.mocks">
+    <package name="test.mocks">
       <metrics statements="46" coveredstatements="46" conditionals="7" coveredconditionals="7" methods="0" coveredmethods="0"/>
       <file name="handlers.ts" path="C:\Users\homur\Desktop\2024_react+vite\React-Hono-Todo-TypeScript-Cloudflare-Drizzle\client\src\test\mocks\handlers.ts">
         <metrics statements="44" coveredstatements="44" conditionals="7" coveredconditionals="7" methods="0" coveredmethods="0"/>
@@ -315,13 +265,6 @@
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="client.src.types">
-      <metrics statements="1" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="types.ts" path="C:\Users\homur\Desktop\2024_react+vite\React-Hono-Todo-TypeScript-Cloudflare-Drizzle\client\src\types\types.ts">
-        <metrics statements="1" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="7" count="0" type="stmt"/>
       </file>
     </package>
   </project>
