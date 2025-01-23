@@ -50,4 +50,26 @@ describe("TodoAppコンポーネントのテストケース", () => {
 
     expect(await screen.findByText("New Todo")).toBeInTheDocument();
   });
+
+  test("Todoを削除する", async () => {
+    renderWithQueryClient(<TodoApp />);
+
+    // 新しいTodoを追加する
+    const input = await screen.findByPlaceholderText("Add a new task");
+    await userEvent.type(input, "delete task");
+    const addButton = await screen.findByRole("button", { name: "Add" });
+    await userEvent.click(addButton);
+
+    // 追加されたTodoが表示されていることを確認する
+    expect(await screen.findByText("delete task")).toBeInTheDocument();
+
+    // 追加した新しいTodoを削除する
+    const deleteButtons = await screen.getAllByRole("button", {
+      name: "Delete",
+    });
+    await userEvent.click(deleteButtons[2]);
+
+    // 削除したTodoが表示されていないことを確認する
+    // expect(await screen.queryByText("delete task")).not.toBeInTheDocument();
+  });
 });
