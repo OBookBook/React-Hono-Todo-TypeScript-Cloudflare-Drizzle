@@ -75,4 +75,35 @@ describe("TodoAppコンポーネントのテストケース", () => {
       expect(screen.queryByText("delete task")).not.toBeInTheDocument();
     });
   });
+
+  test("Todoを編集する", async () => {
+    renderWithQueryClient(<TodoApp />);
+
+    // 新しいTodoを追加する
+    const input = await screen.findByPlaceholderText("Add a new task");
+    await userEvent.type(input, "edit task");
+    const addButton = await screen.findByRole("button", { name: "Add" });
+    await userEvent.click(addButton);
+
+    // 追加されたTodoが表示されていることを確認する
+    expect(await screen.findByText("edit task")).toBeInTheDocument();
+
+    // 編集ボタンをクリックする
+    const editButtons = await screen.getAllByRole("button", {
+      name: "Edit",
+    });
+    await userEvent.click(editButtons[editButtons.length - 1]);
+
+    // 編集フォームに入力する
+    const editInput = await screen.findByDisplayValue("edit task");
+    await userEvent.clear(editInput);
+    await userEvent.type(editInput, "編集後のタスク");
+
+    // 保存ボタンをクリックする
+    const saveButton = await screen.findByRole("button", { name: "保存" });
+    await userEvent.click(saveButton);
+
+    // 編集後のタスクが表示されていることを確認する
+    expect(await screen.findByText("編集後のタスク")).toBeInTheDocument();
+  });
 });

@@ -37,4 +37,17 @@ export const handlers = [
       { status: 200 }
     );
   }),
+  http.put("http://127.0.0.1:8787/todos/:id", async (req) => {
+    const id = req.params.id;
+    const updateInfo = (await req.request.json()) as { title: string };
+    const todoIndex = todos.findIndex((todo) => todo.id === id);
+
+    const updatedTodo = {
+      ...todos[todoIndex],
+      title: updateInfo.title,
+    };
+    todos[todoIndex] = updatedTodo;
+
+    return HttpResponse.json(updatedTodo, { status: 200 });
+  }),
 ];
