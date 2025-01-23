@@ -57,6 +57,7 @@ const TodoItem = ({ todo, onDelete, onEdit }: TodoItem) => {
           <button
             className="text-blue-500 hover:text-blue-600"
             onClick={() => setIsEditing(true)}
+            aria-label="Edit"
           >
             <svg
               className="h-5 w-5"
@@ -72,6 +73,7 @@ const TodoItem = ({ todo, onDelete, onEdit }: TodoItem) => {
         <button
           className="text-red-500 hover:text-red-600"
           onClick={() => onDelete(Number(todo.id))}
+          aria-label="Delete"
         >
           <svg
             className="h-5 w-5"
