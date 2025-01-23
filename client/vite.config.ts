@@ -11,4 +11,8 @@ export default defineConfig({
     setupFiles: ["./vitest-setup.ts"],
     globals: true,
   },
+  coverage: {
+    provider: "v8",
+    exclude: ["src/main.tsx", "src/APP.tsx", "**/*.cjs"],
+  },
 });
